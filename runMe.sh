@@ -5,7 +5,6 @@ if [ -z $1 ] ; then
  exit 1
 fi
 echo '镜像版本是： '$1
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go
 docker build -t blog:$1 . 
 imageId=`docker images | grep blog | awk '{print $3}' | sed -n '1p'`
 echo $imageId
